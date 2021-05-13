@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Pain Diary</string>
+    <string name="mapbox_access_token">pk.eyJ1IjoiaG9tZWJyZXciLCJhIjoiY2toMngwaWdzMGtmcjJzbXNqZmxxdGY1ayJ9.DTLlYusUb3Py7jIBFd23cw</string>
+</resources>

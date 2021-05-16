@@ -63,9 +63,9 @@ public abstract class PainRecordDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... voids){
-            painRecordDAO.insert(new PainRecord("ss",1,"xxx","xxxx"));
-            painRecordDAO.insert(new PainRecord("emial2",2,"sddsd","dsdsds"));
-            painRecordDAO.insert(new PainRecord("emial3",3,"sdsdsds","dsdsds"));
+            painRecordDAO.insert(new PainRecord("ss",1,"xxx","xxxx","head"));
+            painRecordDAO.insert(new PainRecord("emial2",2,"sddsd","dsdsds","hand"));
+            painRecordDAO.insert(new PainRecord("emial3",3,"sdsdsds","dsdsds","legs"));
 
             return null;
         }

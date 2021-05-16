@@ -10,11 +10,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import androidx.annotation.ArrayRes;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -28,6 +31,8 @@ import com.example.test1.entity.PainRecord;
 
 import com.example.test1.viewmodel.PainRecordViewModel;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class PainDataEntryFragment extends Fragment {
@@ -65,10 +70,15 @@ public class PainDataEntryFragment extends Fragment {
         String email = homePage.email;
 
 
-        //RadioGroup radioGroup = (RadioGroup) homePage.findViewById(R.id.radioGroup);
-//        int selectedId = binding.radioGroup.getCheckedRadioButtonId();
-//        RadioButton radioButton = binding.radioGroup.findViewById(selectedId);
+        final String[] arr = {"Head","Back","legs","arms"};
+        ArrayAdapter<String> adapter =new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item,arr);
+        binding.painLocationSpinner.setAdapter(adapter);
 
+
+
+        final String[] abb = {"low","high","average"};
+        ArrayAdapter<String> adapter2 =new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item,abb);
+        binding.moodSpinner.setAdapter(adapter2);
 
 
 
@@ -78,14 +88,18 @@ public class PainDataEntryFragment extends Fragment {
 
                 String message = binding.editTextGoal.getText().toString();
                 float painful = binding.slider.getValue();
-                String mood = binding.radioGroup.toString();
+                //String mood = binding.radioGroup.toString();
+                String mood = binding.moodSpinner.getSelectedItem().toString();
+                String painLocation = binding.painLocationSpinner.getSelectedItem().toString();
+
+
 
                 //binding.slider.setEnabled(false);
 
                 if(!message.isEmpty()){
 
                     double painLevel = Double.parseDouble(String.valueOf(painful));
-                    PainRecord user = new PainRecord(email, painLevel,message,mood);
+                    PainRecord painRecord = new PainRecord(email, painLevel,message,mood,painLocation);
                     PainRecordViewModel.insert(painRecord);
 
 
@@ -94,27 +108,7 @@ public class PainDataEntryFragment extends Fragment {
         });
 
 
-
-
-
-
-
-
-
         return view;
-
-
-//        List<String> list = new ArrayList<String>();
-//        list.add("Shoulder");
-//        list.add("Head");
-//        list.add("Back");
-//        final ArrayAdapter<String> spinnerAdapter = new
-//                ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_item,list);
-//        binding.movieSpinner.setAdapter(spinnerAdapter);
-
-        //return rootView;
-
-
     }
 
 

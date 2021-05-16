@@ -78,7 +78,7 @@
         android:id="@+id/registerBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="register"
+        android:text="Register"
         app:layout_constraintTop_toTopOf="@+id/forgetPwdBtn"
         app:layout_constraintLeft_toRightOf="@+id/forgetPwdBtn"
         android:layout_marginLeft="80dp"

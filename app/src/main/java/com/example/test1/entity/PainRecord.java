@@ -32,13 +32,19 @@ public class PainRecord {
     @NonNull
     public String mood;
 
+    @ColumnInfo (name = "pain)location")
+    @NonNull
+    public String painLocation;
 
 
-    public PainRecord (@NonNull String email, double painLevel, String mood, String message){
+
+
+    public PainRecord (@NonNull String email, double painLevel, String mood, String message, String painLocation){
         this.email = email;
         this.painLevel = painLevel;
         this.message = message;
         this.mood = mood;
+        this.painLocation = painLocation;
     }
 
 }

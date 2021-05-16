@@ -103,7 +103,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if(task.isSuccessful()){
-                            PainRecord painRecord = new PainRecord(email, 0, "","");
+                            PainRecord painRecord = new PainRecord(email, 0, "","","");
 
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())

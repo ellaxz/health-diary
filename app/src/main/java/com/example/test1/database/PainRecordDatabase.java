@@ -36,38 +36,9 @@ public abstract class PainRecordDatabase extends RoomDatabase {
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                     PainRecordDatabase.class, "UserDatabase")
                     .fallbackToDestructiveMigration()
-                    .addCallback(roomCallback)
                     .build();
         }
         return INSTANCE; }
 
-    private  static  RoomDatabase.Callback roomCallback = new RoomDatabase.Callback(){
-        @Override
-        public void onCreate(@NonNull SupportSQLiteDatabase db){
-            super.onCreate(db);
-            new PopulateDbAsyncTask(INSTANCE).execute();
-        }
 
-    };
-
-    private static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void>{
-
-        private PainRecordDAO painRecordDAO;
-
-        private PopulateDbAsyncTask(PainRecordDatabase db){
-            painRecordDAO = db.painRecordDao();
-
-
-        }
-
-
-        @Override
-        protected Void doInBackground(Void... voids){
-            painRecordDAO.insert(new PainRecord("ss",1,"xxx","xxxx","head"));
-            painRecordDAO.insert(new PainRecord("emial2",2,"sddsd","dsdsds","hand"));
-            painRecordDAO.insert(new PainRecord("emial3",3,"sdsdsds","dsdsds","legs"));
-
-            return null;
-        }
-    }
 }

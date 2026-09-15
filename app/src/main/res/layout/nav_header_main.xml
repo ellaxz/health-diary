@@ -3,23 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="176dp"
-    android:background="@drawable/side_nav_bar"
+    android:background="@color/ink"
     android:gravity="bottom"
     android:orientation="vertical"
-    android:theme="@style/ThemeOverlay.MaterialComponents.Dark">
-    <ImageView
-    android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/ic_launcher_round" />
+    android:padding="20dp">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Navigation Destinations"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+        android:fontFamily="serif"
+        android:text="Pain Diary"
+        android:textColor="@color/paper"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="select from the menu" />
+        android:layout_marginTop="4dp"
+        android:text="a quiet place to track how you feel"
+        android:textColor="@color/ink_muted"
+        android:textSize="13sp" />
+
 </LinearLayout>

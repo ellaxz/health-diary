@@ -1,7 +1,6 @@
 package com.example.test1.fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.test1.HomePage;
+import com.example.test1.activity.HomePage;
 import com.example.test1.databinding.DailyRecordFragmentBinding;
 import com.example.test1.entity.PainRecord;
 import com.example.test1.viewmodel.PainRecordViewModel;

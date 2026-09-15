@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.test1.MainActivity;
+import com.example.test1.activity.MainActivity;
 import com.example.test1.databinding.HomeFragmentBinding;
 
 import com.example.test1.viewmodel.PainRecordViewModel;

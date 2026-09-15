@@ -5,34 +5,27 @@ package com.example.test1.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import androidx.annotation.ArrayRes;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 
-import com.example.test1.HomePage;
-import com.example.test1.R;
+import com.example.test1.activity.HomePage;
+
 import com.example.test1.databinding.PainDataEntryFragmentBinding;
 
 import com.example.test1.entity.PainRecord;
 
 import com.example.test1.viewmodel.PainRecordViewModel;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class PainDataEntryFragment extends Fragment {

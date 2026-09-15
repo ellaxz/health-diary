@@ -1,4 +1,4 @@
-package com.example.test1;
+package com.example.test1.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,14 +13,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.test1.fragment.HomeFragment;
+import com.example.test1.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -105,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
+                progressBar.setVisibility(View.GONE);
                 if(task.isSuccessful()){
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -117,9 +116,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         user.sendEmailVerification();
                         Toast.makeText(MainActivity.this, "please verify your email", Toast.LENGTH_SHORT).show();
                     }
-
                 }else{
-                    Toast.makeText(MainActivity.this, "Failed to login. Please check your credentials", Toast.LENGTH_LONG).show();
+                    String errorMsg = task.getException() != null ? task.getException().getMessage() : "Unknown error";
+                    Toast.makeText(MainActivity.this, "Login failed: " + errorMsg, Toast.LENGTH_LONG).show();
                 }
             }}
         );

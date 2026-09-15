@@ -22,7 +22,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterUser extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView banner, registerUser;
+    private TextView banner;
+    private Button registerUser;
     private EditText editTextFullName, editTextEmail, editTextPassword;
     private ProgressBar progressBar;
 
@@ -37,7 +38,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
         banner = (TextView) findViewById(R.id.banner);
         banner.setOnClickListener(this);
 
-        registerUser = (Button) findViewById(R.id.regiserUserBtn);
+        registerUser = findViewById(R.id.regiserUserBtn);
         registerUser.setOnClickListener(this);
         editTextFullName = (EditText) findViewById(R.id.fullName);
         editTextEmail = (EditText) findViewById(R.id.registerEmail);
@@ -95,40 +96,37 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
         }
 
 
-        progressBar.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.GONE);
+        registerUser.setEnabled(true);
 
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+            FirebaseAuth.getInstance()
+                    .getCurrentUser()
+                    .sendEmailVerification()
+                    .addOnCompleteListener(verificationTask -> {
+                        if (verificationTask.isSuccessful()) {
+                            Toast.makeText(
+                                    RegisterUser.this,
+                                    "Registration successful. Please check your email.",
+                                    Toast.LENGTH_LONG
+                            ).show();
+                        } else {
+                            Toast.makeText(
+                                    RegisterUser.this,
+                                    "Registered, but verification email could not be sent.",
+                                    Toast.LENGTH_LONG
+                            ).show();
+                        }
 
-                        if(task.isSuccessful()){
-                            PainRecord painRecord = new PainRecord(email, 0, "","","");
+                        FirebaseAuth.getInstance().signOut();
 
-                            FirebaseDatabase.getInstance().getReference("Users")
-                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                    .setValue(painRecord).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-
-                                    if(task.isSuccessful()){
-                                        Toast.makeText(RegisterUser.this, "User has been registered successgully", Toast.LENGTH_LONG).show();
-                                        progressBar.setVisibility(View.GONE);
-                                        startActivity(new Intent(RegisterUser.this, MainActivity.class));
-
-                                        //redirect to login page
-                                    }else{
-                                        Toast.makeText(RegisterUser.this, "Fail to register. Try again", Toast.LENGTH_LONG).show();
-                                        progressBar.setVisibility(View.GONE);
-                                    }
-                                }
-                            });
-
-
-                    }
-                }
-        });
-
-
+                        Intent intent = new Intent(
+                                RegisterUser.this,
+                                MainActivity.class
+                        );
+                        startActivity(intent);
+                        finish();
+                    });
+        }
     }
 }

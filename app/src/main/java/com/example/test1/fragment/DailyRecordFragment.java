@@ -44,12 +44,6 @@ public class DailyRecordFragment extends Fragment {
                     String recordDetails = (temp.email + ", pain location" + temp.painLocation +",  Walk goal" + temp.message + ", pain level" + temp.painLevel +", mood:" + temp.mood);
                     allRecords = allRecords + System.getProperty("line.separator") + recordDetails;}
                 addBinding.textView5.setText("all data: " + allRecords);
-/*                if (painRecords.size() > 0) {
-                    PainRecord user = painRecords.get(painRecords.size());
-                    addBinding.textView5.setText(user.email+",pain level = " + user.painLevel + ",mood = " + user.mood + ",goal = " + user.message + "pain location = " + user.painLocation);*/
-                    /*PainRecord lastUser = painRecords.get(painRecords.size() - 1);
-                    Log.e("DAILYRECORD", lastUser.email + ", pain level=" + lastUser.painLevel+ "mood" + lastUser.mood + "goal" + lastUser.message);
-                    addBinding.textView5.setText(lastUser.email + ",pain level = " + lastUser.painLevel + ",mood = " + lastUser.mood + ",goal = " + lastUser.message + "pain location = " + lastUser.painLocation);*/
 
             }
         });

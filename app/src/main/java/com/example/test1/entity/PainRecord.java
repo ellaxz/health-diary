@@ -21,7 +21,6 @@ public class PainRecord {
     public String email;
 
     @ColumnInfo (name = "pain_level")
-    @NonNull
     public double painLevel;
 
     @ColumnInfo (name = "goal")
@@ -32,14 +31,14 @@ public class PainRecord {
     @NonNull
     public String mood;
 
-    @ColumnInfo (name = "pain)location")
+    @ColumnInfo (name = "pain_location")
     @NonNull
     public String painLocation;
 
 
 
 
-    public PainRecord (@NonNull String email, double painLevel, String mood, String message, String painLocation){
+    public PainRecord (@NonNull String email, double painLevel, String message, String mood, String painLocation){
         this.email = email;
         this.painLevel = painLevel;
         this.message = message;

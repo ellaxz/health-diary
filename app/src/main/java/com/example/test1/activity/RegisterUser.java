@@ -46,14 +46,12 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.banner:
-                startActivity(new Intent(this, MainActivity.class));
-                break;
-            case R.id.regiserUserBtn:
-                registerUser();
-                break;
+        if (v.getId()==R.id.banner){
+            startActivity(new Intent(this, MainActivity.class));
+        }else if (v.getId()==R.id.regiserUserBtn){
+            registerUser();
         }
+
 
     }
 

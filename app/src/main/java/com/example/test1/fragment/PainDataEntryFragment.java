@@ -93,7 +93,7 @@ public class PainDataEntryFragment extends Fragment {
 
                     double painLevel = Double.parseDouble(String.valueOf(painful));
                     PainRecord painRecord = new PainRecord(email, painLevel,message,mood,painLocation);
-                    PainRecordViewModel.insert(painRecord);
+                    painRecordViewModel.insert(painRecord);
 
 
                 }

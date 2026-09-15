@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class PainRecordViewModel extends AndroidViewModel {
-    private static PainRecordRepository uRepository;
+    private PainRecordRepository uRepository;
     private LiveData<List<PainRecord>> allRecords;
 
     public PainRecordViewModel(@NonNull Application application) {
@@ -39,7 +39,7 @@ public class PainRecordViewModel extends AndroidViewModel {
     }
 
 
-    public static void insert(PainRecord painRecord) {
+    public void insert(PainRecord painRecord) {
         uRepository.insert(painRecord);
     }
 

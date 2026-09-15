@@ -34,13 +34,11 @@ public class HomePage extends AppCompatActivity {
         painRecordViewModel = new ViewModelProvider(this).get(PainRecordViewModel.class);
 
         setSupportActionBar(binding.appBar.toolbar);
-
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home_fragment,
                 R.id.nav_pain_data_entry_fragment,
                 R.id.nav_daily_rec_fragment,
-                R.id.nav_report_fragment,
-                R.id.nav_map_fragment)
+                R.id.nav_report_fragment)
                 .setOpenableLayout(binding.drawerLayout)
                 .build();
 
